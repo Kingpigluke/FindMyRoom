@@ -1,0 +1,172 @@
+Find My Room — 2-Week Sprint Plan
+Sprint length: 2 weeks
+Total sprints: 6 (12 weeks total)
+
+Sprint cadence:
+Week 1: Build
+Week 2: Build + test + demo
+
+Every sprint ends with something that works.
+
+Sprint 1 (Weeks 1–2): Foundations & Data Design
+Team Goals:
+Lock scope
+Understand the building
+Define how navigation data works
+
+All Team Members:
+Walk the building floor
+Identify entrances, hallway junctions, rooms
+Agree on naming conventions
+
+Backend Lead:
+Create FastAPI project
+Define user & schedule schemas
+Stub routing endpoint
+
+Frontend Lead:
+Create React app
+Basic page layout (login → select room → directions)
+
+Data / Graph Lead:
+Create node & edge schema (JSON)
+Draft 10–15 sample nodes & edges
+
+QA / Integration Lead:
+Write acceptance criteria
+Define “done” for navigation
+Sprint Demo
+Repo exists
+Sample graph loads
+API returns mock directions
+
+Sprint 2 (Weeks 3–4): Core Routing Engine
+Team Goals:
+Dynamic routing works
+Fastest path calculation verified
+
+Backend Lead:
+Implement Dijkstra routing
+Load graph from JSON
+Return ordered node list
+
+Data / Graph Lead:
+Expand graph to ~50% of floor
+Assign distances to edges
+
+Frontend Lead:
+Room selection dropdown
+Directions list component (static data)
+
+QA / Integration Lead:
+Validate routing results manually
+Report missing or bad edges
+Sprint Demo
+Select two rooms → get correct text directions
+
+Sprint 3 (Weeks 5–6): Authentication & Schedule
+Team Goals:
+Users can log in
+Today’s class destinations are stored
+
+Backend Lead:
+JWT auth
+Schedule CRUD endpoints
+
+Frontend Lead:
+Login form
+Schedule entry form (today only)
+
+Data / Graph Lead:
+Finish full floor graph
+Add instruction text per edge
+
+QA / Integration Lead:
+Test auth flows
+Validate schedule logic
+Sprint Demo
+Logged-in user saves a class room and requests directions
+
+Sprint 4 (Weeks 7–8): End-to-End Integration
+Team Goals:
+Frontend and backend fully connected
+Real routes displayed to users
+
+Backend Lead:
+Finalize route API
+Error handling for invalid rooms
+
+Frontend Lead:
+Connect APIs
+Display real step-by-step instructions
+
+Data / Graph Lead:
+Verify all rooms are reachable
+Fix ambiguous instructions
+
+QA / Integration Lead:
+Full user flow testing
+Bug tracking
+Sprint Demo
+Login → pick room → get correct directions
+
+Sprint 5 (Weeks 9–10): Polish & Reliability
+Team Goals:
+App feels complete
+Edge cases handled cleanly
+
+Backend Lead:
+Input validation
+Meaningful error messages
+
+Frontend Lead:
+UX polish
+Clear instruction formatting
+
+Data / Graph Lead:
+Instruction consistency review
+Minor refinements
+
+QA / Integration Lead:
+Regression testing
+Demo rehearsal
+Sprint Demo
+Stable, clean navigation experience
+
+Sprint 6 (Weeks 11–12): Finalization & Presentation
+Team Goals:
+Submission-ready
+Confident demo
+
+All Team Members:
+Documentation
+Architecture explanation
+Known limitations list
+
+Backend Lead:
+API docs
+Security explanation
+
+Frontend Lead:
+Demo walkthrough
+
+Data / Graph Lead:
+Graph documentation
+
+QA / Integration Lead:
+Final test report
+Final Demo
+Live navigation
+Explanation of algorithm
+Clear future expansion path
+
+Why This Sprint Plan Works:
+Every sprint produces a demoable feature
+
+Risks are surfaced early
+
+Data entry is spread out
+
+Integration is not delayed until the end
+
+Fits the 6-hour/week constraint
