@@ -1,101 +1,50 @@
 {
   "nodes": [
-    { "id": "ENT_WEST", "label": "West Entrance", "type": "entrance" },
+    { "id": "ENT_CENT", "label": "Central Staircase", "type": "entrance" },
     { "id": "ENT_EAST", "label": "East Entrance", "type": "entrance" },
-    { "id": "ENT_SOUTH", "label": "South Entrance", "type": "entrance" },
+    { "id": "ENT_WEST", "label": "West Entrance", "type": "entrance" },
 
-    { "id": "N_HALL_W1", "label": "West Hallway Junction" },
-    { "id": "N_HALL_W2", "label": "West Central Hallway" },
 
-    { "id": "N_CENTER", "label": "Central Open Area" },
+    { "id": "W_HALL_1", "label": "Rooms: 320W, 320V, 320Y, bathrooms", "type": "node" },
+    { "id": "W_HALL_2", "label": "Rooms: 330D, 320R", "type": "node" },
+    { "id": "W_HALL_3", "label": "Rooms: 320T, 320Q", "type": "node" },
+    { "id": "W_HALL_4", "label": "Rooms: 330F, 320P", "type": "node" },
+    { "id": "W_HALL_5", "label": "Rooms: 3", "type": "node" },
+    { "id": "W_HALL_6", "label": "Rooms: 3", "type": "node" },
+    { "id": "W_HALL_7", "label": "Rooms: 3", "type": "node" },
+    { "id": "W_HALL_8", "label": "Rooms: 3", "type": "node" },
 
-    { "id": "N_NORTH_1", "label": "North Hallway Junction" },
-    { "id": "N_NORTH_2", "label": "North East Hallway Junction" },
+    
+    { "id": "E_HALL_1", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_2", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_3", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_4", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_5", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_6", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_7", "label": "Rooms: 3", "type": "node" },
+    { "id": "E_HALL_8", "label": "Rooms: 3", "type": "node" },
 
-    { "id": "N_SOUTH_1", "label": "South Hallway Junction" },
-    { "id": "N_SOUTH_2", "label": "South East Hallway Junction" },
+    
+    { "id": "N_HALL_1", "label": "Rooms: Bathrooms", "type": "node" },
+    { "id": "N_HALL_2", "label": "Rooms: 379, 385, 375", "type": "node" },
+    { "id": "N_HALL_3", "label": "Rooms: 376, 367, 362, 361", "type": "node" },
+    { "id": "N_HALL_4", "label": "Rooms: 356, 353, 357", "type": "node" },
+    { "id": "N_HALL_5", "label": "Rooms: 347, 341", "type": "node" },
+    { "id": "N_HALL_6", "label": "Rooms: 342, Study Area", "type": "node" },
 
-    { "id": "ROOM_320R", "label": "Room 320R", "type": "room" },
-    { "id": "ROOM_330L", "label": "Room 330L", "type": "room" },
-    { "id": "ROOM_375", "label": "Room 375", "type": "room" },
-    { "id": "ROOM_310T", "label": "Room 310T", "type": "room" }
+
+    { "id": "N_QUAD_1", "label": "Study Area", "type": "node" },
+    { "id": "N_QUAD_2", "label": "Rooms: 394, 393, Study Area", "type": "node" },
+    { "id": "N_QUAD_3", "label": "Rooms: 396 and 398", "type": "node"}
+
   ],
 
   "edges": [
     {
-      "from": "ENT_WEST",
-      "to": "N_HALL_W1",
-      "distance": 10,
-      "instruction": "Enter through the west doors and walk straight into the hallway."
-    },
-    {
-      "from": "N_HALL_W1",
-      "to": "N_HALL_W2",
-      "distance": 15,
-      "instruction": "Continue straight down the west hallway."
-    },
-    {
-      "from": "N_HALL_W2",
-      "to": "N_CENTER",
-      "distance": 20,
-      "instruction": "Walk forward toward the central open area."
-    },
-
-    {
-      "from": "ENT_EAST",
-      "to": "N_NORTH_2",
-      "distance": 8,
-      "instruction": "Enter through the east doors and proceed inside."
-    },
-    {
-      "from": "N_NORTH_2",
-      "to": "N_CENTER",
-      "distance": 18,
-      "instruction": "Walk straight toward the central area."
-    },
-
-    {
-      "from": "ENT_SOUTH",
-      "to": "N_SOUTH_1",
-      "distance": 10,
-      "instruction": "Enter through the south doors and walk forward."
-    },
-    {
-      "from": "N_SOUTH_1",
-      "to": "N_SOUTH_2",
-      "distance": 12,
-      "instruction": "Continue along the south hallway."
-    },
-    {
-      "from": "N_SOUTH_2",
-      "to": "N_CENTER",
-      "distance": 16,
-      "instruction": "Proceed toward the center of the building."
-    },
-
-    {
-      "from": "N_CENTER",
-      "to": "ROOM_375",
-      "distance": 10,
-      "instruction": "Turn north; Room 375 will be ahead."
-    },
-    {
-      "from": "N_CENTER",
-      "to": "ROOM_320R",
-      "distance": 12,
-      "instruction": "Turn southwest; Room 320R is along the hallway."
-    },
-    {
-      "from": "N_CENTER",
-      "to": "ROOM_330L",
-      "distance": 14,
-      "instruction": "Turn west; continue until you reach Room 330L."
-    },
-    {
-      "from": "N_SOUTH_2",
-      "to": "ROOM_310T",
-      "distance": 6,
-      "instruction": "Room 310T is located just off the hallway on your left."
+      "from": "",
+      "to": "",
+      "distance": 0,
+      "instruction": ""
     }
   ]
 }
