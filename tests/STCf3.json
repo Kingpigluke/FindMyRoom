@@ -1,0 +1,101 @@
+{
+  "nodes": [
+    { "id": "ENT_WEST", "label": "West Entrance", "type": "entrance" },
+    { "id": "ENT_EAST", "label": "East Entrance", "type": "entrance" },
+    { "id": "ENT_SOUTH", "label": "South Entrance", "type": "entrance" },
+
+    { "id": "N_HALL_W1", "label": "West Hallway Junction" },
+    { "id": "N_HALL_W2", "label": "West Central Hallway" },
+
+    { "id": "N_CENTER", "label": "Central Open Area" },
+
+    { "id": "N_NORTH_1", "label": "North Hallway Junction" },
+    { "id": "N_NORTH_2", "label": "North East Hallway Junction" },
+
+    { "id": "N_SOUTH_1", "label": "South Hallway Junction" },
+    { "id": "N_SOUTH_2", "label": "South East Hallway Junction" },
+
+    { "id": "ROOM_320R", "label": "Room 320R", "type": "room" },
+    { "id": "ROOM_330L", "label": "Room 330L", "type": "room" },
+    { "id": "ROOM_375", "label": "Room 375", "type": "room" },
+    { "id": "ROOM_310T", "label": "Room 310T", "type": "room" }
+  ],
+
+  "edges": [
+    {
+      "from": "ENT_WEST",
+      "to": "N_HALL_W1",
+      "distance": 10,
+      "instruction": "Enter through the west doors and walk straight into the hallway."
+    },
+    {
+      "from": "N_HALL_W1",
+      "to": "N_HALL_W2",
+      "distance": 15,
+      "instruction": "Continue straight down the west hallway."
+    },
+    {
+      "from": "N_HALL_W2",
+      "to": "N_CENTER",
+      "distance": 20,
+      "instruction": "Walk forward toward the central open area."
+    },
+
+    {
+      "from": "ENT_EAST",
+      "to": "N_NORTH_2",
+      "distance": 8,
+      "instruction": "Enter through the east doors and proceed inside."
+    },
+    {
+      "from": "N_NORTH_2",
+      "to": "N_CENTER",
+      "distance": 18,
+      "instruction": "Walk straight toward the central area."
+    },
+
+    {
+      "from": "ENT_SOUTH",
+      "to": "N_SOUTH_1",
+      "distance": 10,
+      "instruction": "Enter through the south doors and walk forward."
+    },
+    {
+      "from": "N_SOUTH_1",
+      "to": "N_SOUTH_2",
+      "distance": 12,
+      "instruction": "Continue along the south hallway."
+    },
+    {
+      "from": "N_SOUTH_2",
+      "to": "N_CENTER",
+      "distance": 16,
+      "instruction": "Proceed toward the center of the building."
+    },
+
+    {
+      "from": "N_CENTER",
+      "to": "ROOM_375",
+      "distance": 10,
+      "instruction": "Turn north; Room 375 will be ahead."
+    },
+    {
+      "from": "N_CENTER",
+      "to": "ROOM_320R",
+      "distance": 12,
+      "instruction": "Turn southwest; Room 320R is along the hallway."
+    },
+    {
+      "from": "N_CENTER",
+      "to": "ROOM_330L",
+      "distance": 14,
+      "instruction": "Turn west; continue until you reach Room 330L."
+    },
+    {
+      "from": "N_SOUTH_2",
+      "to": "ROOM_310T",
+      "distance": 6,
+      "instruction": "Room 310T is located just off the hallway on your left."
+    }
+  ]
+}
