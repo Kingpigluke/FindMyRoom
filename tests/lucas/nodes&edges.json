@@ -22,6 +22,7 @@
   ],
 
   "edges": [
+    # West #
     {
       "from": "ENT_WEST",
       "to": "N_HALL_W1",
@@ -40,7 +41,7 @@
       "distance": 20,
       "instruction": "Walk forward toward the central open area."
     },
-
+# East #
     {
       "from": "ENT_EAST",
       "to": "N_NORTH_2",
@@ -53,7 +54,7 @@
       "distance": 18,
       "instruction": "Walk straight toward the central area."
     },
-
+# South #
     {
       "from": "ENT_SOUTH",
       "to": "N_SOUTH_1",
@@ -72,7 +73,7 @@
       "distance": 16,
       "instruction": "Proceed toward the center of the building."
     },
-
+# Rooms #
     {
       "from": "N_CENTER",
       "to": "ROOM_375",
