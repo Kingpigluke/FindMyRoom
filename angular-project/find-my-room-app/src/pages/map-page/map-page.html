@@ -1,1 +1,19 @@
-<p>map-page works!</p>
+<div class="flex flex-col items-center w-full">
+    <div class="w-full h-auto bg-sky-500 flex flex-row">
+        <div class="flex flex-col w-[80%]">
+            <input type="search" placeholder="From" class="bg-sky-50 rounded-md text-md p-2 m-2 mb-1 focus:ring-3 focus:ring-sky-950 focus:border-sky-950">
+            <input type="search" placeholder="To" class="bg-sky-50 rounded-md text-md p-2 m-2 mt-1">  
+        </div>
+    </div>
+    @for(item of items; track item.direction){
+        <div class="flex flex-row pt-2 pb-2 w-[90%] h-auto">
+            <div class="size-15 mr-6 flex justify-center items-center">
+                <span class="material-symbols-outlined">{{getIcon(item.direction)}}</span>
+            </div>
+            <div class="w-auto flex items-center h-15">
+                <p class="text-center">{{item.direction}}</p>
+            </div>
+        </div>
+    }
+    <button (click)="printDirections()">Print Directions</button>
+</div>
