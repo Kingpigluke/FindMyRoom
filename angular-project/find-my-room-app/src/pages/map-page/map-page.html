@@ -1,19 +1,107 @@
 <div class="flex flex-col items-center w-full">
-    <div class="w-full h-auto bg-sky-500 flex flex-row">
-        <div class="flex flex-col w-[80%]">
-            <input type="search" placeholder="From" class="bg-sky-50 rounded-md text-md p-2 m-2 mb-1 focus:ring-3 focus:ring-sky-950 focus:border-sky-950">
-            <input type="search" placeholder="To" class="bg-sky-50 rounded-md text-md p-2 m-2 mt-1">  
+    <div class="w-full h-auto bg-sky-500 flex flex-row p-4">
+        <div class="flex flex-col w-[80%] gap-2">
+            <!-- FROM Input con Dropdown -->
+            <div class="relative">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                        location_on
+                    </span>
+                    <input 
+                        type="text" 
+                        placeholder="From" 
+                        [(ngModel)]="searchFrom"
+                        (input)="onSearchFromChange()"
+                        (focus)="showDropdownFrom = true"
+                        class="w-full bg-white rounded-lg text-md pl-12 pr-4 py-3 shadow-md focus:ring-2 focus:ring-sky-700 focus:outline-none transition-all"
+                    >
+                </div>
+                
+                <!-- Dropdown FROM -->
+                @if(showDropdownFrom && filteredNodesFrom.length > 0) {
+                    <div class="absolute z-10 w-full mt-2 bg-white rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        @for(node of filteredNodesFrom; track node.id) {
+                            <div 
+                                (click)="selectNodeFrom(node)"
+                                class="px-4 py-3 hover:bg-sky-100 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors"
+                            >
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-sky-600 text-sm">
+                                        {{ node.type === 'entrance' ? 'door_front' : 'place' }}
+                                    </span>
+                                    <div>
+                                        <p class="font-medium text-gray-800">{{ node.label }}</p>
+                                        <p class="text-xs text-gray-500">{{ node.id }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- TO Input con Dropdown -->
+            <div class="relative">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                        flag
+                    </span>
+                    <input 
+                        type="text" 
+                        placeholder="To" 
+                        [(ngModel)]="searchTo"
+                        (input)="onSearchToChange()"
+                        (focus)="showDropdownTo = true"
+                        class="w-full bg-white rounded-lg text-md pl-12 pr-4 py-3 shadow-md focus:ring-2 focus:ring-sky-700 focus:outline-none transition-all"
+                    >
+                </div>
+                
+                <!-- Dropdown TO -->
+                @if(showDropdownTo && filteredNodesTo.length > 0) {
+                    <div class="absolute z-10 w-full mt-2 bg-white rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        @for(node of filteredNodesTo; track node.id) {
+                            <div 
+                                (click)="selectNodeTo(node)"
+                                class="px-4 py-3 hover:bg-sky-100 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors"
+                            >
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-sky-600 text-sm">
+                                        {{ node.type === 'entrance' ? 'door_front' : 'place' }}
+                                    </span>
+                                    <div>
+                                        <p class="font-medium text-gray-800">{{ node.label }}</p>
+                                        <p class="text-xs text-gray-500">{{ node.id }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Botón de búsqueda -->
+        <div class="w-[20%] flex items-center justify-center">
+            <button 
+                (click)="findRoute()"
+                class="bg-white h-16 p-3 rounded-full text-sky-600 shadow-lg hover:bg-sky-50 hover:scale-100 transition-all"
+            >
+                <span class="material-symbols-outlined">directions</span>
+            </button>
         </div>
     </div>
-    @for(item of items; track item.direction){
-        <div class="flex flex-row pt-2 pb-2 w-[90%] h-auto">
-            <div class="size-15 mr-6 flex justify-center items-center">
-                <span class="material-symbols-outlined">{{getIcon(item.direction)}}</span>
+
+    <!-- Instrucciones -->
+    <div class="w-full">
+        @for(item of items; track $index){
+            <div class="flex flex-row pt-4 pb-4 px-6 w-full border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                <div class="w-12 h-12 mr-4 flex justify-center items-center bg-sky-100 rounded-full">
+                    <span class="material-symbols-outlined text-sky-600">{{getIcon(item.direction)}}</span>
+                </div>
+                <div class="flex items-center flex-1">
+                    <p class="text-gray-700">{{item.direction}}</p>
+                </div>
             </div>
-            <div class="w-auto flex items-center h-15">
-                <p class="text-center">{{item.direction}}</p>
-            </div>
-        </div>
-    }
-    <button (click)="printDirections()">Print Directions</button>
+        }
+    </div>
 </div>
