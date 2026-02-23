@@ -183,11 +183,6 @@ if __name__ == "__main__":
 # navigate("ENT_WEST", "375")
 
 
-
-
-
-
-
 def can_reach(start, goal):
     visited = set()
     stack = [start]
