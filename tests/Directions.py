@@ -2,6 +2,17 @@ import json
 import heapq
 import re
 
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class NavigationRequest(BaseModel):
+    start_node: str
+    room_number: str
+
+
+
 # -----------------------------
 # Load JSON graph
 # -----------------------------
@@ -169,6 +180,38 @@ def navigate(start_node, room_number):
 
     print(f"\nYou have arrived at Room {room_number}.")
 
+# API
+
+@app.post("/navigate")
+def api_navigate(request: NavigationRequest):
+
+    start_node = request.start_node
+    room_number = request.room_number
+
+    if start_node not in nodes:
+        return {"error": "Invalid starting node"}
+
+    goal_node = find_room_node(room_number)
+
+    if not goal_node:
+        return {"error": "Room not found"}
+
+    if not can_reach(start_node, goal_node):
+        return {"error": "No path exists"}
+
+    total_distance, steps = shortest_path(start_node, goal_node)
+
+    instructions = []
+    for node, instruction in steps:
+        if instruction:
+            instructions.append(instruction)
+
+    return {
+        "start": nodes[start_node]["label"],
+        "destination_room": room_number,
+        "distance": total_distance,
+        "steps": instructions
+    }
 
 # -----------------------------
 # Main Program
@@ -194,5 +237,5 @@ def main():
 # -----------------------------
 # Run Program
 # -----------------------------
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#    main()
