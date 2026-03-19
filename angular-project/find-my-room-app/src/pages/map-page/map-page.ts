@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { APIService } from '../../services/api-service';
@@ -29,26 +29,21 @@ export class MapPage implements OnInit {
   showDropdownFrom: boolean = false;
   showDropdownTo: boolean = false;
 
-  items = [
-    { direction: 'Turn right at the next intersection', imgSrc: 'assets/turn-right.png' },
-    { direction: 'Walk straight for 200 meters', imgSrc: 'assets/walk-straight.png' },
-    { direction: 'Your destination will be on the left', imgSrc: 'assets/destination-left.png' }
-  ];
+  items: { direction: string, imgSrc: string }[] = [];
 
-  constructor(private apiService: APIService) {}
+  constructor(private apiService: APIService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    // Cargar todos los nodos al iniciar
-    // this.apiService.getNodes().subscribe({
-    //   next: (data: any) => {
-    //     this.nodes = data;
-    //     this.filteredNodesFrom = data;
-    //     this.filteredNodesTo = data;
-    //   },
-    //   error: (error) => {
-    //     console.error('Error loading nodes:', error);
-    //   }
-    // });
+    this.apiService.getNodes().subscribe({
+      next: (data: any) => {
+        this.nodes = data as Node[];
+        this.filteredNodesFrom = this.nodes;
+        this.filteredNodesTo = this.nodes;
+      },
+      error: (error) => {
+        console.error('Error loading nodes:', error);
+      }
+    });
   }
 
   onSearchFromChange(): void {
@@ -88,14 +83,30 @@ export class MapPage implements OnInit {
     this.apiService.findRoute(this.selectedFrom.id, this.selectedTo.id).subscribe({
       next: (response: any) => {
         console.log('Route found:', response);
-        this.items = response.instructions.map((inst: any) => ({
-          direction: inst.instruction,
-          imgSrc: ''
-        }));
+        
+        if (response.error) {
+          alert(response.error);
+          this.items = []; // Limpiar lista si hay error
+          this.cdr.detectChanges(); // <-- Agregado para forzar limpieza
+          return;
+        }
+
+        if (response.instructions) {
+          this.items = [...response.instructions.map((inst: any) => ({
+            direction: inst.instruction,
+            imgSrc: ''
+          }))];
+          this.cdr.detectChanges(); // Forzar actualizacion de pantalla
+        } else {
+          this.items = [];
+          this.cdr.detectChanges();
+        }
       },
       error: (error) => {
         console.error('Error finding route:', error);
         alert('No route found');
+        this.items = [];
+        this.cdr.detectChanges();
       }
     });
   }

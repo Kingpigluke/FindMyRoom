@@ -29,26 +29,26 @@ print(f"Loaded {len(nodes)} nodes and {len(edges)} edges from JSON.")
 # -----------------------------
 connector_edges = [
     {
-        "from": "W_HALL_8",
-        "to": "N_HALL_1",
+        "from": "W_STC_HALL_8",
+        "to": "N_STC_HALL_1",
         "distance": 8,
         "instruction": "Turn right at the end of the west hallway toward the central corridor"
     },
     {
-        "from": "E_HALL_8",
-        "to": "N_HALL_1",
+        "from": "E_STC_HALL_8",
+        "to": "N_STC_HALL_1",
         "distance": 8,
         "instruction": "Turn left at the end of the east hallway toward the central corridor"
     },
     {
-        "from": "ENT_WEST",
-        "to": "ENT_CENT",
+        "from": "ENT_STC_WEST",
+        "to": "ENT_STC_CENT",
         "distance": 6,
         "instruction": "Walk through the main corridor toward the central staircase"
     },
     {
-        "from": "ENT_EAST",
-        "to": "ENT_CENT",
+        "from": "ENT_STC_EAST",
+        "to": "ENT_STC_CENT",
         "distance": 6,
         "instruction": "Walk through the main corridor toward the central staircase"
     }
